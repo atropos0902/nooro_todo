@@ -1,0 +1,18 @@
+{
+  "name": "rest-express",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node src/index.js"
+  },
+  "dependencies": {
+    "@nextui-org/input": "^2.4.6",
+    "@nextui-org/react": "^2.6.8",
+    "@prisma/client": "^6.2.1",
+    "cors": "^2.8.5",
+    "express": "4.18.2"
+  },
+  "devDependencies": {
+    "prisma": "^6.2.1"
+  }
+}
