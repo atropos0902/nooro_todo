@@ -9,10 +9,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <div className="w-full">
-          <Header></Header>
-          {children}
-        </div>
+        <Header></Header>
+        <div className="w-full">{children}</div>
       </body>
     </html>
   );
