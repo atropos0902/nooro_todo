@@ -1,9 +1,10 @@
-import { AxiosInstance } from "@/utils/axiosInstance";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Todo } from "@/utils/todoUtil";
+
+import { Todo } from "@/interfaces/Todo";
+import { AxiosInstance } from "@/utils/axiosInstance";
 
 const colorList: string[] = [
   "bg-red",

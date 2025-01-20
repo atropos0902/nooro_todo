@@ -1,10 +1,10 @@
 "use client";
 
-import { AxiosInstance } from "@/utils/axiosInstance";
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/navigation";
-import { Todo } from "@/utils/todoUtil";
+
+import { Todo } from "@/interfaces/Todo";
 
 interface TaskCardProps {
   todo: Todo;
