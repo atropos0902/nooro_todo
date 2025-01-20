@@ -53,68 +53,69 @@ export default function Home() {
   };
 
   return (
-    <main className="grid items-center justify-items-center -translate-y-6">
-      <Link
-        className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2"
-        href="/edit"
-      >
-        Create Task{" "}
-        <Image src="/img/plus.svg" width={16} height={16} alt=""></Image>
-      </Link>
-
-      <div className="grid items-center justify-items-center w-736 gap-6 mt-todo">
-        <div className="flex justify-between w-full">
-          <div className="gap-2">
-            <span className="text-tasks">Tasks</span>{" "}
-            <span className="py-0.5 px-2 gap-2.5 bg-badge rounded-badge">
-              {todoList.length}
-            </span>
+    <>
+      <main className="flex flex-col items-center justify-items-center text-white relative top-[173px]">
+        <Link
+          className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2"
+          href="/edit"
+        >
+          Create Task{" "}
+          <Image src="/img/plus.svg" width={16} height={16} alt=""></Image>
+        </Link>
+        <div className="grid items-center justify-items-center w-736 gap-6 mt-todo">
+          <div className="flex justify-between w-full">
+            <div className="gap-2">
+              <span className="text-tasks">Tasks</span>{" "}
+              <span className="py-0.5 px-2 gap-2.5 bg-badge rounded-badge">
+                {todoList.length}
+              </span>
+            </div>
+            <div className="gap-2">
+              <span className="text-completed">Completed</span>{" "}
+              <span className="py-0.5 px-2 gap-2.5 bg-badge rounded-badge">
+                {!todoList.length
+                  ? "0"
+                  : `${
+                      todoList.filter((todo: Todo) => todo.completed).length
+                    } of ${todoList.length}`}
+              </span>
+            </div>
           </div>
-          <div className="gap-2">
-            <span className="text-completed">Completed</span>{" "}
-            <span className="py-0.5 px-2 gap-2.5 bg-badge rounded-badge">
-              {!todoList.length
-                ? "0"
-                : `${
-                    todoList.filter((todo: Todo) => todo.completed).length
-                  } of ${todoList.length}`}
-            </span>
-          </div>
+          {!todoList.length ? (
+            <div className="grid items-center justify-items-center rounded-lg border-t w-full border-todo gap-4 px-6 py-16.5 text-disabled">
+              <Image
+                src="/img/clipboard.png"
+                alt=""
+                width={56}
+                height={56}
+              ></Image>
+              <div className="font-bold">
+                You don't have any tasks registered yet.
+              </div>
+              <div className="font-normal">
+                Create tasks and organize your to-do items.
+              </div>
+            </div>
+          ) : (
+            <div className="grid items-center justify-items-center rounded-lg w-full gap-4 text-disabled">
+              {todoList.map((todo: Todo, index: number) => (
+                <TaskCard
+                  key={index}
+                  todo={todo}
+                  onDelete={setDeleteTaskId}
+                  onUpdateStatus={onUpdateTask}
+                />
+              ))}
+            </div>
+          )}
         </div>
-        {!todoList.length ? (
-          <div className="grid items-center justify-items-center rounded-lg border-t w-full border-todo gap-4 px-6 py-16.5 text-disabled">
-            <Image
-              src="/img/clipboard.png"
-              alt=""
-              width={56}
-              height={56}
-            ></Image>
-            <div className="font-bold">
-              You don't have any tasks registered yet.
-            </div>
-            <div className="font-normal">
-              Create tasks and organize your to-do items.
-            </div>
-          </div>
-        ) : (
-          <div className="grid items-center justify-items-center rounded-lg w-full gap-4 text-disabled">
-            {todoList.map((todo: Todo, index: number) => (
-              <TaskCard
-                key={index}
-                todo={todo}
-                onDelete={setDeleteTaskId}
-                onUpdateStatus={onUpdateTask}
-              />
-            ))}
-          </div>
-        )}
-      </div>
 
-      <ConfirmModal
-        isOpen={Boolean(deleteTaskId)}
-        onConfirm={onConfirmDelete}
-        onCancel={() => setDeleteTaskId(null)}
-      />
-    </main>
+        <ConfirmModal
+          isOpen={Boolean(deleteTaskId)}
+          onConfirm={onConfirmDelete}
+          onCancel={() => setDeleteTaskId(null)}
+        />
+      </main>
+    </>
   );
 }

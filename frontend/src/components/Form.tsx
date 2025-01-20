@@ -65,6 +65,7 @@ const Form: React.FC<FormProps> = ({ todo }) => {
         <Link href="/">
           <Image
             src="/img/arrow-left.svg"
+            className="text-black"
             width={24}
             height={24}
             alt=""
@@ -74,14 +75,14 @@ const Form: React.FC<FormProps> = ({ todo }) => {
       <div className="grid gap-3">
         <div className="text-tasks font-bold">Title</div>
         <input
-          className={`w-full rounded-lg border p-4 gap-3 shadow-input border-todo bg-input`}
+          className={`w-full rounded-lg border p-4 gap-3 shadow-input border-todo bg-input text-white`}
           type="text"
           placeholder="Ex. Brush you teeth"
           value={taskTitle}
           onChange={(e) => setTaskTitle(e.target.value)}
         />
         {!taskTitle ? (
-          <div className="text-red-800">Please enter title field</div>
+          <div className="text-red-700">Please enter title field</div>
         ) : (
           <></>
         )}
@@ -102,7 +103,7 @@ const Form: React.FC<FormProps> = ({ todo }) => {
       </div>
       {!todo?.title ? (
         <button
-          className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2"
+          className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2 text-white"
           type="submit"
           disabled={!taskTitle}
           onClick={onSubmitHandle}
@@ -112,7 +113,7 @@ const Form: React.FC<FormProps> = ({ todo }) => {
         </button>
       ) : (
         <button
-          className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2"
+          className="w-736 rounded-lg flex items-center justify-center justify-items-center bg-button p-4 font-bold text-sm/[19.6px] gap-2 text-white"
           type="submit"
           disabled={!taskTitle}
           onClick={onUpdateHandle}
